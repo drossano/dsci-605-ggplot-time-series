@@ -9,22 +9,25 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+```{r}
+library(tidyverse)
+crime = read_rds("Crime3years.rds") %>%
+  # filter dates before 2018
+  filter(Date>=date("2018-01-01")) %>% 
+  # filter dates after 2019
+  filter(Date<date("2020-01-01"))
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# plot hourly data
+hourly_crime_plot = ggplot(crime, aes(x=Date, y = Battery)) +
+  geom_point() +
+  geom_line()
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+hourly_crime_plot
 
-```{r cars}
-summary(cars)
+# create new columns for hour, weekday, month, year and weeknum
+crime_new <- crime %>% 
+  mutate(hour = hour(crime$Date), week = weekdays(crime$Date),
+         month = month(crime$Date), year = year(crime$Date)) %>% 
+  mutate(weeknum = strftime(Date, format = '%V'))
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
