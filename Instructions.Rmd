@@ -1,0 +1,60 @@
+---
+title: 'Step 1: ggplot2 for time series plotting '
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+This lab is preconfigured to include all dependencies (libraries, packages, and datasets) you'll need to complete your work in RStudio. You can practice, run test cases, and work on assignments from your browser.
+
+# Assignment Overview
+This assignment aims to test if you can use ggplot() to conduct time series (temporal) data visualization and use scale_x_*() family function to format the date and times for x axis.  In this lab, you are required to use the data provided in the Module 11 folder, "Crime3years.rds"
+
+
+#### The basic steps should be included in this lab: 
+Please create an R Markdown file, set the output format as html_document or html_document2. Finally knit the R Markdown file into the HTML file. 
+
+Time series data visualization steps:  
+1. Install and load required packages.    
+2. Load and inspect the dataset.   
+- Original data: Three-year crime data from 2017-09-01 to 2020-08-31. 
+- Select two-years: from 2018-01-01 00:00:00 to 2019-12-31 00:00:00. 
+- Integrate the two-year time series data into weekly and monthly data based on the skills in Module10, Lesson 10.1. 
+- Please check your data after the integration procedure. Since the first week of a year may not start from the first day of the year, you need to remove the weeks not in 2018 and 2019. In this lab, weeks in 2020 should be removed before plotting.  
+
+3. Plot a time series visualization with two-year data at an hourly scale. 
+4. Plot a time series visualization with two-year data at a weekly scale. 
+5. Plot a time series visualization with two-year data at a monthly scale. 
+6. Plot the two-year time series at a monthly scale using stacked style. This means the x-axis is one year (12 months). 
+7. Please knit your R Markdown file into a HTML file and submit the HTML file. 
+
+##### Important Reminder on Knit in this In-Browser RStudio option for this lab #####  
+
+This lab is hosted in an iframe that facilitates lab management features but consequently will prevent Knitting to HTML or Preview Notebook working by default. However, you can still Knit your files in lab by taking the following steps:    
+- Step 1: Go to the “Help” icon in your lab toolbar (top right corner).  
+- Step 2: Select the “Switch Back to the Old Experience” hyperlink (right click select if you’d like to keep both the submit and knit windows open)  
+- Step 3: Knit your files to HTML or Preview Notebook. You should now be able to load and preview them in your lab appropriately.   
+
+More details can be found in the RStudio Lab - In-Browser Option Reading : https://www.coursera.org/lea rn/ball-state-university-data-visualization/supplement/E9jjS/rstudio-lab-in-browser-option
+ 
+
+### Grading Criteria 
+This week, your .html code will be autograded on the following elements:   
+1. Your code should match the sequential operations required by the instructor.  
+2. Your code chunks should not be hidden. So, we can grade your code.  
+3. You should select exactly two-year data from 2018-01-01 00:00:00 to 2019-12-31 00:00:00.  
+4. You should integrate the data on an hourly scale into a weekly and a monthly scale.  
+5. You should use ggplot() to create a time series visualization with the two-year data at a hourly scale. Please label the x axis using scale_x_datetime() for the date and time format (year/month/day-time: 04/24/18-00:00:00).   
+6. You should use ggplot() to create a time series visualization with the two-year data at a weekly scale. Please label the x axis using scale_x_date() for the date format (year-week number: 2018/05).   
+7. You should use ggplot() to create a time series visualization with the two-year data at a monthly scale. Please label the x axis using scale_x_date() for the date format (e.g. year-month abbr:2018-Jan)  
+8. You should plot the two-year time series on a monthly scale using stacked style. This means the x-axis is one year (12 months).  Please label the x axis using scale_x_date() for date format (month abbreviation: Jan).  
+9. Your code should be run successfully.   
+10. You should provide comments for each step.  
+11. You should submit the file with extension of .html.  
+
+### How to Submit Your Work for a Grade
+Follow the steps below to complete your assignment submission:  
+1. Complete your activity within your Step 1: Programming ggplot2 for time series plotting lab and save your files in RStudio under Module11.  
+2. If you're working within the In-Browser RStudio lab: Please download your .html file locally by selecting it in the "Files" tab of your RStudio lab, and then selecting the options "More" -> Export -> Download.  
+3. Within this Peer Review item below, click on the "My Submission" tab, and upload your local .html file for review.  
+4. Once submitted, review the work of 3 of your peers, using provided questions and prompts to receive credit for this hands-on activity.
