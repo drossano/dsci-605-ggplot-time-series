@@ -29,5 +29,10 @@ crime_new <- crime %>%
   mutate(hour = hour(crime$Date), week = weekdays(crime$Date),
          month = month(crime$Date), year = year(crime$Date)) %>% 
   mutate(weeknum = strftime(Date, format = '%V'))
+
+crime_weekly <- crime_new %>% 
+  group_by(weeknum, year) %>% 
+  summarize(case_weekly = sum(Battery)) %>% 
+  mutate(yearweek=paste0(year, " ", weeknum))
 ```
 
