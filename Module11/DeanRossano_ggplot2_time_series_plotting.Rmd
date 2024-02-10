@@ -30,9 +30,38 @@ crime_new <- crime %>%
          month = month(crime$Date), year = year(crime$Date)) %>% 
   mutate(weeknum = strftime(Date, format = '%V'))
 
+# integrate date into a weekly scale
 crime_weekly <- crime_new %>% 
   group_by(weeknum, year) %>% 
   summarize(case_weekly = sum(Battery)) %>% 
-  mutate(yearweek=paste0(year, " ", weeknum))
+  mutate(yearweek=paste0(year,weeknum))
+
+# plot the weekly data
+weekly_crime_plot = ggplot(crime_weekly, aes(x=yearweek, y = case_weekly, group = 1)) +
+  geom_point() +
+  geom_line()
+
+weekly_crime_plot
+
+# integrate date into a weekly scale
+crime_monthly <- crime_new %>% 
+  group_by(month, year) %>% 
+  summarize(case_monthly = sum(Battery))
+
+# plot the weekly data
+monthly_crime_plot = ggplot(crime_monthly, aes(x=yearmonth, y = case_monthly, group = 1)) +
+  geom_point() +
+  geom_line()
+
+monthly_crime_plot
+
+crime_monthly_2years1 = crime_monthly %>% mutate(day=1) %>% 
+  mutate(MDAY=as.Date(paste(day,month,sep="."),"%d.%m"))
+
+stacked_crime_plot = ggplot(crime_monthly_2years1, aes(x=MDAY, y = case_monthly, color=as.factor(year))) +
+geom_point() +
+geom_line()
+
+stacked_crime_plot
 ```
 
