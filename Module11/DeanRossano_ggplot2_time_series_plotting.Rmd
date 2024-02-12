@@ -56,9 +56,11 @@ monthly_crime_plot = ggplot(crime_monthly, aes(x=yearmonth, y = case_monthly, gr
 
 monthly_crime_plot
 
+# add a day placeholder for the stacked plot
 crime_monthly_2years1 = crime_monthly %>% mutate(day=1) %>% 
   mutate(MDAY=as.Date(paste(day,month,sep="."),"%d.%m"))
 
+# plot the stacked plot
 stacked_crime_plot = ggplot(crime_monthly_2years1, aes(x=MDAY, y = case_monthly, color=as.factor(year))) +
 geom_point() +
 geom_line()
