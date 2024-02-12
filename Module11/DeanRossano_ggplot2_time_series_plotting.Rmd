@@ -34,11 +34,11 @@ crime_new <- crime %>%
 # integrate date into a weekly scale
 crime_weekly <- crime_new %>% 
   group_by(weeknum, year) %>% 
-  summarize(case_weekly = sum(Battery)) %>% 
-  mutate(date=as.Date(paste(year, weeknum, 1, sep="-"), "%Y-%U-%u"))
+  summarize(yearmonth=min(Date),case_weekly=sum(Battery))
+
 # plot the weekly data
-weekly_crime_plot = ggplot(crime_weekly, aes(x=date, y = case_weekly, group = 1)) +
-  scale_x_date(date_labels = "%Y-%W") +
+weekly_crime_plot = ggplot(crime_weekly, aes(x=yearmonth, y = case_weekly, group = 1)) +
+  scale_x_datetime(date_labels = "%Y-%W", date_breaks = "10 weeks") +
   geom_point() +
   geom_line()
 
