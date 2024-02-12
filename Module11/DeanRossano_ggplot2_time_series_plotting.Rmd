@@ -19,7 +19,7 @@ crime = read_rds("Crime3years.rds") %>%
 
 # plot hourly data
 hourly_crime_plot = ggplot(crime, aes(x=Date, y = Battery)) +
-  scale_x_datetime(date_labels = "%m/%d/%Y-%H") +
+  scale_x_datetime(date_labels = "%m/%d/%Y-%H", date_breaks = "5 months") +
   geom_point() +
   geom_line()
 
