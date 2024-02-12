@@ -46,7 +46,8 @@ weekly_crime_plot
 # integrate date into a weekly scale
 crime_monthly <- crime_new %>% 
   group_by(month, year) %>% 
-  summarize(case_monthly = sum(Battery))
+  summarize(case_monthly = sum(Battery)) %>% 
+  mutate(yearmonth=paste0(year,month))
 
 # plot the weekly data
 monthly_crime_plot = ggplot(crime_monthly, aes(x=yearmonth, y = case_monthly, group = 1)) +
